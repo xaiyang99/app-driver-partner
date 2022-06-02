@@ -5,6 +5,11 @@
 <head>
     <?php include('../../components/lib/library.php') ?>
 </head>
+<style>
+    .card-footer{
+        height: 300px;
+    }
+</style>
 
 <body ng-app="app">
     <!-- App Capsule -->
@@ -20,62 +25,68 @@
                 <img src="../../img/images.png" alt="" />
             </div>
             <div class="card-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <h2>ຊື່ລົດ:</h2>
-                            </th>
-                            <td>
-                                <h2>A002</h2>
-                            </td>
+                <div class="col-12">
+                    <div class="stat-box">
+                        <table>
+                            <thead>
+                                <?php
+                                    $_id = $_SESSION['userID'];
+                                    $sql = "SELECT * FROM tb_vehicle LEFT JOIN tb_shipping_routes ON tb_vehicle._id=tb_shipping_routes.vehicleID
+                                    LEFT JOIN tb_users ON tb_vehicle._id=tb_users._id WHERE tb_users._id='$_id'";
+                                    $result = mysqli_query($conn, $sql);
+                                    $row = mysqli_fetch_array($result);
+                                ?>
+                                <tr>
+                                    <th width="100px">
+                                        <h2>
+                                            <div class="title" class="text-center">
+                                                <h3>ຊື່ລົດ</h3>
+                                            </div>
+                                        </h2>
+                                    </th>
+                                    <th width="100px">
+                                        <div class="title">
+                                            <h3>ສະຖານະ</h3>
+                                        </div>
+                                    </th>
+                                    <th class="text-center">
+                                        <h3>ຢືນຢັນ</h3>
+                                    </th>
 
-                        </tr>
-                        <tr>
-                            <th>
-                                <h2>ສະຖານະ:</h2>
-                            </th>
-                            <td>
-                                <h2>ກຳລັງແລ່ນ</h2>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <h2>ສາຍຂົນສົ່ງ:</h2>
-                            </th>
-                            <td>
-                                <h2>ສາຍລ້ອງແຈ້ງ</h2>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <h2>ເວລາທີ່ຈະອອກ:</h2>
-                            </th>
-                            <td>
-                                <h2>8:30 AM</h2>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <h2>ສູນທີ່ຈະໄປ:</h2>
-                            </th>
-                            <td>
-                                <h2>ສູນປາກເຊ</h2>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><h2>ການອະນຸມັດ</h2></th>
-                            <td><h2>ຍັງບໍ່ໄດ້ອະນຸມັດ</h2></td>
-                        </tr>
-                    </thead>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="value text-success"><?php echo $row['vehicleName'] ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="value text-success"><?php 
+                                        $runStatus = $row['runStatus'];
+                                        if($runStatus == "RUNNING"){
+                                            echo "ກຳລັງແລ່ນ";
+                                        }else{
+                                            echo "ຈອດ";
+                                        }
+                                        ?></div>
+                                    </td>
+                                    <td>
+                                        <button type="submit" ng-click="_onLogin()" id="submit" class="btn btn-danger">
+                                            ອອກລົດ
+                                        </button>
+                                    </td>
+                                </tr>
 
-                </table>
+                            </thead>
+
+                        </table>
+
+                    </div>
+                </div>
+
             </div>
-            <div class="card-footer text-center">
-                <button type="submit" ng-click="_onLogin()" id="submit" class="btn btn-danger btn-block btn-lg">
-                    ຢືນຢັນການອອກລົດ
-                </button>
+            <div class="card-footer">
+
             </div>
+
         </div>
 
 

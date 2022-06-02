@@ -1,8 +1,8 @@
 <div class="appBottomMenu">
-     <a href="../../services/order/" class="item pt-2" id="order-list">
+     <a href="../../services/confirm_car_out/" class="item pt-2" id="order-list">
           <div class="col">
-               <i class="icon-filter_none fa-2x"></i>
-               <h5 class="mt-1">ລາຍການຂາຍ</h5>
+               <i class="icon-truck fa-2x"></i>
+               <h5 class="mt-1">ຢືນຢັນເຂົ້າ-ອອກລົດ</h5>
           </div>
      </a>
      <a href="../../services/home/" class="item pt-2" id="home">
@@ -11,10 +11,10 @@
                <h5 class="mt-1">ໜ້າຫຼັກ</h5>
           </div>
      </a>
-     <a href="../../services/post-item/" class="item pt-2" id="post-item">
+     <a href="../../services/profile_users/" class="item pt-2" id="post-item">
           <div class="col">
-               <i class="icon-shopping-cart1 fa-2x"></i>
-               <h5 class="mt-1">ລາຍການອໍເດີ່</h5>
+               <i class="icon-user fa-2x"></i>
+               <h5 class="mt-1">ໂປຣຟາຍ</h5>
           </div>
      </a>
 </div>
